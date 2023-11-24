@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+
+    <title>6роук</title>
+  </head>
+
+  <body>
+    <form method="post">
+      {% csrf_token %}
+      <p>Имя пользователя: <input type="text" name="username"></p>
+          <p>Пароль: <input type="password" name="password"></p>
+
+      <button type="submit">войти</button>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'core/css/sign_in.css' %}">
+    <title>6роук</title>
+  </head>
+
+  <body>
+
+  <div class="login">
+  <!-- login header -->
+    <h1 id="header">Sign up in seconds</h1>
+  <!-- start da login goodness -->
+    <form id="form" method="post">
+      {% csrf_token %}
+      username={{ form.username }}<br>
+      mail={{ form.email }}<br>
+      pawwssd={{ form.password1 }}<br>
+      confirm={{ form.password2 }}<br>
+      {{ form.message.errors }}<br>
+      <input type="submit" value="Sign me up!">
+    </form>
+  </div>
+
+  {% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
+
+
+  </body>
+</html>

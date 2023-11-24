@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/scroll.css' %}">
+    <title>Кинопоиск2</title>
+  </head>
+
+  <body>
+
+    <div id="left-part">
+      <a id="logo" class="gradiented" href="#">Кинопоиск 2</a>
+      <a class="gradiented" href="{% url 'core:main_page' %}">Домой</a>
+      <a class="gradiented" href="{% url 'core:movies' %}">Фильмы</a>
+      <a class="gradiented" href="{% url 'core:actors' %}">Актёры</a>
+      <a class="gradiented" href="{% url 'core:feedbacks' %}">Оценки</a>
+
+    </div>
+
+    <div class="right-part">
+
+        <nav id="top-nav">
+          {% if user.is_authenticated %}
+            <span class="gradiented">{{request.user}} </span><button class="btn"><a href="{% url 'core:logout' %}">выйти</a></button>
+          {% else %}
+          <button class="btn"><a href="{% url 'core:sign_in' %}">войти</a></button>
+          {% endif %}
+
+      </nav>
+
+      {% if user.is_authenticated %}
+        {% if user.is_superuser %}
+          {% block content%}
+
+          {% endblock %}
+        {% endif %}
+      {% endif %}
+    </div>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+  {% if user.is_authenticated %}
+    <span >{{request.user}} </span><button><a href="{% url 'core:logout' %}">выйти</a></button>
+  {% else %}
+    <button><a href="{% url 'core:sign_up' %}">зарегистрирваться</a></button>
+    <button><a href="{% url 'core:sign_in' %}">войти</a></button>
+  {% endif %}
+
+    <p>отчество={{user.profile.patronymic}}</p>
+    <p>номер телефофыв={{user.profile.phone_number}}</p>
+    <p>дата рождле={{user.profile.date_of_birth}}</p>
+
+
+</body>
+</html>

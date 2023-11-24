@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'core/css/sign_in.css' %}">
+    <title>6роук</title>
+  </head>
+
+  <body>
+
+  <div class="login">
+  <!-- login header -->
+    <h1 id="header">Sign up in seconds</h1>
+  <!-- start da login goodness -->
+    <form id="form" method="post">
+      {% csrf_token %}
+      patr={{ form.patronymic }}<br>
+      dob={{ form.date_of_birth }}<br>
+      p_num={{ form.phone_number }}<br>
+      {{ form.message.errors }}<br>
+      <input type="submit" value="ladno!">
+    </form>
+  </div>
+
+  </body>
+</html>
